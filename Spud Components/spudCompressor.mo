@@ -13,9 +13,9 @@ model compressorSPUD
     Placement(visible = true, transformation(origin = {-90, 64}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-94, 2}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Mechanics.Rotational.Components.Inertia inertia(J = 1e-6) annotation(
     Placement(visible = true, transformation(origin = {-14, 18}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  Modelica.Mechanics.Rotational.Components.IdealGearR2T idealGearR2T(ratio = 250)  annotation(
+  Modelica.Mechanics.Rotational.Components.IdealGearR2T idealGearR2T(ratio = 2500)  annotation(
     Placement(visible = true, transformation(origin = {-14, -14}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  Modelica.Thermal.FluidHeatFlow.Components.Cylinder cylinder(A = 0.005, L(displayUnit = "mm") = 0.03000000000000001, T(displayUnit = "K", start = 303.15), medium = air_30degC, s(displayUnit = "mm", start = 0.03000000000000001))  annotation(
+  Modelica.Thermal.FluidHeatFlow.Components.Cylinder diaphragm(A = 0.05, L(displayUnit = "mm") = 0.03000000000000001, T(displayUnit = "K", start = 303.15), medium = air_30degC, s(displayUnit = "mm", start = 0.03000000000000001))  annotation(
     Placement(visible = true, transformation(origin = {-14, -50}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
   parameter Modelica.Thermal.FluidHeatFlow.Media.Air_30degC air_30degC annotation(
     Placement(visible = true, transformation(origin = {68, -56}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -40,11 +40,11 @@ equation
     Line(points = {{-14, 40}, {-14, 28}}));
   connect(inertia.flange_b, idealGearR2T.flangeR) annotation(
     Line(points = {{-14, 8}, {-14, -4}}));
-  connect(idealGearR2T.flangeT, cylinder.flange) annotation(
+  connect(idealGearR2T.flangeT, diaphragm.flange) annotation(
     Line(points = {{-14, -24}, {-14, -40}}, color = {0, 127, 0}));
-  connect(cylinder.flowPort, pressureSensor.flowPort) annotation(
+  connect(diaphragm.flowPort, pressureSensor.flowPort) annotation(
     Line(points = {{-14, -60}, {-14, -84}, {10, -84}}, color = {255, 0, 0}));
-  connect(cylinder.flowPort, flowPort_b) annotation(
+  connect(diaphragm.flowPort, flowPort_b) annotation(
     Line(points = {{-14, -60}, {22, -60}}, color = {255, 0, 0}));
   annotation(
     uses(Modelica(version = "4.0.0")),
