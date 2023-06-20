@@ -5,13 +5,13 @@ model DCMotor
     Placement(visible = true, transformation(origin = {-48, 62}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Electrical.Analog.Basic.Inductor inductor(L = 1e03)  annotation(
     Placement(visible = true, transformation(origin = {-20, 62}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Electrical.Analog.Basic.RotationalEMF emf(k = 0.068)  annotation(
+  Modelica.Electrical.Analog.Basic.RotationalEMF emf(k = 0.0068)  annotation(
     Placement(visible = true, transformation(origin = {-14, 22}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   Modelica.Electrical.Analog.Basic.Ground ground annotation(
     Placement(visible = true, transformation(origin = {-62, 2}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealInput u annotation(
     Placement(visible = true, transformation(origin = {-90, 36}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-94, 2}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Mechanics.Rotational.Components.Inertia inertia(J = 1e-6) annotation(
+  Modelica.Mechanics.Rotational.Components.Inertia inertia(J = 1e-7) annotation(
     Placement(visible = true, transformation(origin = {2, -16}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Mechanics.Rotational.Interfaces.Flange_b flange_b annotation(
     Placement(visible = true, transformation(origin = {36, -18}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {102, 2}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

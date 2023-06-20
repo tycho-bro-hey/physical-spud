@@ -3,8 +3,8 @@ model spudDiaphragmPump
 
   parameter Length r = 25e-3 "crank radius offset";
   parameter Length L = 50e-3 "connecting rod length";
-  parameter Area A = 0.05 "area of cylinder";
-  parameter Mass m = 5e-3 "mass of piston in kg";
+  parameter Area A = 0.025 "area of cylinder";
+  parameter Mass m = 5e-5 "mass of piston in kg";
   parameter Modelica.Thermal.FluidHeatFlow.Media.Air_30degC air_30degC annotation(
     Placement(visible = true, transformation(origin = {-66, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Mechanics.Rotational.Interfaces.Flange_a rotationIN annotation(
@@ -26,11 +26,11 @@ model spudDiaphragmPump
   
 equation
 //equations for crank-rod assembly
-  piston.s = r*cos(rotationIN.phi) + sqrt(L^2 - r^2*sin(rotationIN.phi)^2) - r;
+  piston.s = r*cos(rotationIN.phi) + sqrt(L^2 - r^2*sin(rotationIN.phi)^2) - r*2;
   v = (der(piston.s))*speedSensor.w;
   acc = (der(v))*speedSensor.w^2;
   f_piston = m*acc;
-  p*A = -f_piston;
+  p = (f_piston/A);
 
   connect(speedSensor.flange, rotationIN) annotation(
     Line(points = {{-100, 40}, {-100, 20}, {-70, 20}, {-70, 0}}));
